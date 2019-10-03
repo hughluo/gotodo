@@ -1,0 +1,17 @@
+version: 0.1
+
+phases: 
+    install:
+        commands:
+            - echo "install phase start"
+    pre_build:
+        commands: 
+            - echo "pre build phase start"
+    build:
+        commands:
+            - echo "build phase start"
+            - echo "check if app.go contains hello"
+            - grep -Fq "hello" app.go
+    post_build:
+        commands:
+            - echo "post build phase start"
