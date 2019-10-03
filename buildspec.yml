@@ -14,6 +14,11 @@ phases:
             - echo "build phase start"
             - echo "check if app.go contains hello"
             - grep -Fq "hello" app.go
+            - echo "build go file"
+            - go build
     post_build:
         commands:
             - echo "post build phase start"
+    artifacts:
+        files:
+            - 'gotodo'

@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /gotodo
-go run app.go
+pwd
+ll
+./gotodo
