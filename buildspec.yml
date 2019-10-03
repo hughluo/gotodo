@@ -19,6 +19,6 @@ phases:
     post_build:
         commands:
             - echo "post build phase start"
-    artifacts:
-        files:
-            - 'gotodo'
+artifacts:
+    files:
+        - 'gotodo'
