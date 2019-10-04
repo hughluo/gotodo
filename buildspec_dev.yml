@@ -25,7 +25,6 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - cd src
       - pwd
       - ls -ld $(find .) | grep -v git
 artifacts:
