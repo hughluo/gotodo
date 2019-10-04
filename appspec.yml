@@ -1,5 +1,8 @@
 version: 0.0
 os: linux
+files:
+  - source: /
+    destination: $HOME/
 hooks:
   BeforeInstall:
     - location: scripts/deploy/start_server
