@@ -4,7 +4,11 @@ files:
   - source: /
     destination: /webapp/gotodo
 hooks:
+  BeforeInstall:
+    - location: scripts/dev/deploy/StopService.sh
+      timeout: 300
+      runas: root
   AfterInstall:
-    - location: scripts/deploy/start_server
+    - location: scripts/dev/deploy/StartService.sh
       timeout: 300
       runas: root
