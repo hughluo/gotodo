@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /webapp/gotodo
 kill %1
-go run app.go &
+go run app.go & > stdout.log 2 > stderr.log
