@@ -1,3 +1,4 @@
 #!/bin/bash
 cd /webapp/gotodo
-go run app.go
+kill %1
+go run app.go &
