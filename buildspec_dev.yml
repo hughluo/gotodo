@@ -25,7 +25,9 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
+      - pwd
+      - ll
 artifacts:
   files:
-    - gotodo
+    - ./gotodo
   discard-paths: yes
