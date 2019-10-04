@@ -4,7 +4,7 @@ files:
   - source: /
     destination: /webapp/gotodo
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: scripts/deploy/start_server
       timeout: 300
       runas: root
