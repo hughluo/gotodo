@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      golang: 1.13
+    commands:
+      - echo Entered the install phase...
+      - apt-get update -y
+    finally:
+      # - echo This always runs even if the update or install command fails 
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+    finally:
+      # - echo pre_build 
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - go build
+    finally:
+      # - echo This always runs even if the install command fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - gotodo
+  discard-paths: yes
