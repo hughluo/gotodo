@@ -1,7 +1,14 @@
 version: 0.0
 os: linux
+files:
+  - source: /
+    destination: /webapp/gotodo
 hooks:
   BeforeInstall:
-    - location: scripts/deploy/start_server
+    - location: scripts/dev/deploy/Remove.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/dev/deploy/BuildAndRun.sh
       timeout: 300
       runas: root

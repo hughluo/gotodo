@@ -1,29 +1,41 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
-    "strings"
-    "log"
+	"fmt"
+	"log"
+	"net/http"
+	"strings"
 )
 
 func sayhelloName(w http.ResponseWriter, r *http.Request) {
-    r.ParseForm()  // parse arguments, you have to call this by yourself
-    fmt.Println(r.Form)  // print form information in server side
-    fmt.Println("path", r.URL.Path)
-    fmt.Println("scheme", r.URL.Scheme)
-    fmt.Println(r.Form["url_long"])
-    for k, v := range r.Form {
-        fmt.Println("key:", k)
-        fmt.Println("val:", strings.Join(v, ""))
-    }
-    fmt.Fprintf(w, "Hello world!") // send data to client side
+	r.ParseForm()      
+	
+	// print in server
+	fmt.Println(r.Form)
+	fmt.Println("path", r.URL.Path)
+	fmt.Println("scheme", r.URL.Scheme)
+	fmt.Println(r.Form["url_long"])
+	for k, v := range r.Form {
+		fmt.Println("key:", k)
+		fmt.Println("val:", strings.Join(v, ""))
+	}
+	fmt.Println("------------")
+	
+	// print in client
+	fmt.Fprintf(w, "Wow, you find this.")
+	for k, v := range r.Form{
+		fmt.Fprintf(w, k)
+		fmt.Fprintf(w, " = ") 
+		fmt.Fprintf(w, strings.Join(v, ""))
+		fmt.Fprintf(w, ", ")
+	}
 }
 
 func main() {
-    http.HandleFunc("/", sayhelloName) // set router
-    err := http.ListenAndServe(":9090", nil) // set listen port
-    if err != nil {
-        log.Fatal("ListenAndServe: ", err)
-    }
+	fmt.Println("Start running...")
+	http.HandleFunc("/", sayhelloName)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
 }
