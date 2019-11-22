@@ -5,10 +5,10 @@ files:
     destination: /webapp/gotodo
 hooks:
   BeforeInstall:
-    - location: scripts/dev/deploy/StopService.sh
+    - location: scripts/dev/deploy/Remove.sh
       timeout: 300
       runas: root
   AfterInstall:
-    - location: scripts/dev/deploy/StartService.sh
+    - location: scripts/dev/deploy/BuildAndRun.sh
       timeout: 300
       runas: root
